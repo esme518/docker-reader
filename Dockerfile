@@ -12,7 +12,7 @@ RUN set -ex \
     && apk add --update --no-cache curl \
     && wget -O reader.jar $(curl -s $URL | grep browser_download_url | egrep -o "https.+\.jar")
 
-FROM ibm-semeru-runtimes:open-17-jre
+FROM ibm-semeru-runtimes:open-11-jre
 COPY --from=source /root/reader.jar /app/bin/reader.jar
 
 RUN set -ex \
