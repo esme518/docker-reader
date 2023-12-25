@@ -18,8 +18,9 @@ COPY --from=source /root/reader.jar /app/bin/reader.jar
 RUN set -ex \
     && apt-get update && apt-get install -y \
        tini \
+    && apt-get autoremove -y \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /tmp/* /var/lib/apt/lists/*
 
 EXPOSE 8080
 
